@@ -1,6 +1,16 @@
 import cookie from "js-cookie";
 import { getGuestId, getToken } from "helper-functions/getToken";
 import { updateDestinationLocations } from "components/home/module-wise-components/rental/components/utils/bookingHepler";
+export const formattedDate = (userDate) => userDate
+.toLocaleString("en-US", {
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: true,
+})
+.replace(/(\d+)\/(\d+)\/(\d+),\s(\d+:\d+\s[AP]M)/, "$3-$1-$2 $4");
 
 export const bookingConfirm = ({
   id,
@@ -18,6 +28,9 @@ export const bookingConfirm = ({
   handleClose,
   onErrorResponse,
 }) => {
+  // 2025-01-22 03:48:00 PM
+  const userDate = new Date(dateValue);
+  
   const cartObject = {
     vehicle_id: id,
     quantity: 1,
@@ -28,9 +41,9 @@ export const bookingConfirm = ({
     },
     rental_type: tripType,
     estimated_hours: durationValue,
-    pickup_time: dateValue,
+    pickup_time: formattedDate(userDate),
     destination_time: Math.floor(
-      data?.rows?.[0]?.elements[0]?.duration?.value / (60 * 60)
+      data?.rows?.[0]?.elements[0]?.duration?.value / 60
     ),
 
     distance: data?.rows?.[0]?.elements[0]?.distance?.value / 1000,
@@ -48,7 +61,7 @@ export const bookingConfirm = ({
           location_name: searchKey2,
         });
         cookie.set("cart-list", res?.carts?.length);
-        toast.success("Confirm booking successfully!");
+        toast.success("The vehicle successfully added to your cart.");
         handleClose?.();
       }
     },
