@@ -53,6 +53,8 @@ import cookie from "js-cookie";
 import CustomModal from "components/modal";
 import ForgotPassword from "components/auth/ForgotPassword/ForgotPassword";
 import { setOpenForgotPasswordModal } from "redux/slices/utils";
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 const AuthModal = dynamic(() => import("components/auth/AuthModal"));
 
 const Cart = ({ isLoading }) => {
@@ -215,6 +217,8 @@ const SecondNavBar = ({ configData }) => {
   const anchorRef = useRef(null);
   const [modalFor, setModalFor] = useState("sign-in");
   const { openForgotPasswordModal } = useSelector((state) => state.utilsData);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
   let token = undefined;
   let location = undefined;
   let zoneId = undefined;
@@ -363,6 +367,12 @@ const SecondNavBar = ({ configData }) => {
     setModalFor("sign-in");
     setOpenSignIn(false);
   };
+  const handleJoinNowClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
   const getMobileScreenComponents = () => (
     <ModuleWiseNav
       router={router}
@@ -496,7 +506,50 @@ const SecondNavBar = ({ configData }) => {
                   />
                 </Stack>
               )}
-              <Stack justifyContent="flex-end" alignItems="end">
+              <Stack justifyContent="flex-end" alignItems="end" direction="row" spacing={2}>
+                {/* Join Now Dropdown */}
+                <SignInButton
+                  aria-controls={open ? 'join-now-menu' : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? 'true' : undefined}
+                  onClick={handleJoinNowClick}
+                  variant="contained"
+                  sx={{ minWidth: 120 }}
+                >
+                  <CustomStackFullWidth direction="row" alignItems="center" spacing={1}>
+                    <Typography color={theme.palette.whiteContainer.main}>
+                      Join Now
+                    </Typography>
+                  </CustomStackFullWidth>
+                </SignInButton>
+                <Menu
+                  id="join-now-menu"
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleMenuClose}
+                  MenuListProps={{
+                    'aria-labelledby': 'join-now-button',
+                  }}
+                >
+                  <MenuItem onClick={handleMenuClose}>Become a Vendor Owner</MenuItem>
+                  <MenuItem onClick={handleMenuClose}>Become a Delivery Man</MenuItem>
+                </Menu>
+                {/* Login Vendor Button */}
+                <SignInButton
+                  component="a"
+                  href="https://yumbaba.com/login/vendor"
+                  target="_blank"
+                  rel="noopener"
+                  variant="contained"
+                  sx={{ minWidth: 120 }}
+                >
+                  <CustomStackFullWidth direction="row" alignItems="center" spacing={1}>
+                    <Typography color={theme.palette.whiteContainer.main}>
+                      Login Vendor
+                    </Typography>
+                  </CustomStackFullWidth>
+                </SignInButton>
+                {/* Existing Sign In Button */}
                 <SignInButton
                   onClick={() => setOpenSignIn(true)}
                   variant="contained"
