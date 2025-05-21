@@ -537,22 +537,10 @@ const SecondNavBar = ({ configData }) => {
                   <MenuItem onClick={handleMenuClose} component="a" href="https://web.yumbaba.com/deliveryman-registration/" target="_blank" rel="noopener">
                     Become a delivery man
                   </MenuItem>
+                  <MenuItem onClick={handleMenuClose} component="a" href="https:/yumbaba.com/login/vendor/" target="_blank" rel="noopener">
+                    Vendor Login
+                  </MenuItem>
                 </Menu>
-                {/* Login Vendor Button */}
-                <SignInButton
-                  component="a"
-                  href="https://yumbaba.com/login/vendor"
-                  target="_blank"
-                  rel="noopener"
-                  variant="contained"
-                  sx={{ minWidth: 120 }}
-                >
-                  <CustomStackFullWidth direction="row" alignItems="center" spacing={1}>
-                    <Typography color={theme.palette.whiteContainer.main}>
-                      Vendor Login
-                    </Typography>
-                  </CustomStackFullWidth>
-                </SignInButton>
                 {/* Existing Sign In Button */}
                 <SignInButton
                   onClick={() => setOpenSignIn(true)}
