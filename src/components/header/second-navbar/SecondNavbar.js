@@ -549,7 +549,7 @@ const SecondNavBar = ({ configData }) => {
                 >
                   <CustomStackFullWidth direction="row" alignItems="center" spacing={1}>
                     <Typography color={theme.palette.whiteContainer.main}>
-                      Login Vendor
+                      Vendor Login
                     </Typography>
                   </CustomStackFullWidth>
                 </SignInButton>
