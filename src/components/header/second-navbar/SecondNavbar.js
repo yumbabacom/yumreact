@@ -531,7 +531,7 @@ const SecondNavBar = ({ configData }) => {
                     'aria-labelledby': 'join-now-button',
                   }}
                 >
-                  <MenuItem onClick={handleMenuClose} component="a" href="https://web.yumbaba.com/store-registration/?active=active" target="_blank" rel="noopener">
+                  <MenuItem onClick={handleMenuClose} component="a" href="https://web.yumbaba.com/store-registration/" target="_blank" rel="noopener">
                     Become a Vendor owner
                   </MenuItem>
                   <MenuItem onClick={handleMenuClose} component="a" href="https://web.yumbaba.com/deliveryman-registration/" target="_blank" rel="noopener">
@@ -545,10 +545,10 @@ const SecondNavBar = ({ configData }) => {
                   target="_blank"
                   rel="noopener"
                   variant="contained"
-                  sx={{ minWidth: 140, px: 3, py: 1.2 }}
+                  sx={{ minWidth: 120 }}
                 >
                   <CustomStackFullWidth direction="row" alignItems="center" spacing={1}>
-                    <Typography sx={{ fontSize: '1.1rem', fontWeight: 600 }} color={theme.palette.whiteContainer.main}>
+                    <Typography color={theme.palette.whiteContainer.main}>
                       Login Vendor
                     </Typography>
                   </CustomStackFullWidth>
