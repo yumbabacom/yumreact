@@ -61,6 +61,62 @@ const TopNavBar = () => {
 										justifyContent="end"
 										alignItems="center"
 									>
+										{/* New Buttons Start */}
+										<Box component="a" href="#" sx={{ textDecoration: 'none' }}>
+											<Box
+												sx={{
+													px: 2,
+													py: 0.5,
+													borderRadius: 1,
+													bgcolor: 'primary.main',
+													color: 'white',
+													fontWeight: 500,
+													fontSize: '14px',
+													mr: 1,
+													cursor: 'pointer',
+													'&:hover': { bgcolor: 'primary.dark' },
+												}}
+											>
+												Become a Vendor Owner
+											</Box>
+										</Box>
+										<Box component="a" href="https://yumbaba.com/vendor" target="_blank" rel="noopener" sx={{ textDecoration: 'none' }}>
+											<Box
+												sx={{
+													px: 2,
+													py: 0.5,
+													borderRadius: 1,
+													bgcolor: 'secondary.main',
+													color: 'white',
+													fontWeight: 500,
+													fontSize: '14px',
+													mr: 1,
+													cursor: 'pointer',
+													'&:hover': { bgcolor: 'secondary.dark' },
+												}}
+											>
+												Login Vendor
+											</Box>
+										</Box>
+										<Box component="a" href="#" sx={{ textDecoration: 'none' }}>
+											<Box
+												sx={{
+													px: 2,
+													py: 0.5,
+													borderRadius: 1,
+													bgcolor: 'success.main',
+													color: 'white',
+													fontWeight: 500,
+													fontSize: '14px',
+													mr: 1,
+													cursor: 'pointer',
+													'&:hover': { bgcolor: 'success.dark' },
+												}}
+											>
+												Become a Delivery Man
+											</Box>
+										</Box>
+										{/* New Buttons End */}
 										<ThemeSwitches />
 										{configData?.phone && (<CallToAdmin configData={configData}/>)}
 										<CustomLanguage
